@@ -12,6 +12,10 @@ class MainSreen extends StatelessWidget{
             Expanded(
               child: Container(
                 color: Colors.white,
+                child: const Text(
+                "Hello World!",
+                style: TextStyle(color: Colors.black),
+                ),
               ),
               ),
               Expanded(

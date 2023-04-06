@@ -1,7 +1,8 @@
-import 'dart:html';
 
-import 'package:flutter/material.dart';
+import 'package:sistema/constants.dart';
 import 'package:sistema/screens/main/main_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: bgColor,
         textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
-        .apply(BodyColor: Colors.white),
+        .apply(bodyColor: Colors.white),
         canvasColor: secondaryColor,
       ),
       home: MainSreen(),
