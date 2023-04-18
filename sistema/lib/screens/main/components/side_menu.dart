@@ -19,7 +19,7 @@ class SideMenu extends StatelessWidget {
         child: Column(
           children: [
             DrawerHeader(
-              child: Image.asset("$dir/logo.png"),
+              child: Image.asset("$dir/logo-cloud.png"),
             ),
             DrawerListTile(
               title: "Dashboard",
