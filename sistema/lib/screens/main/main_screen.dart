@@ -14,6 +14,7 @@ class MainSreen extends StatelessWidget {
     return Scaffold(
         body: SafeArea(
             child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Expanded(
           child: SideMenu(dir: dir, dirIcon: dirIcon),
@@ -21,8 +22,8 @@ class MainSreen extends StatelessWidget {
         Expanded(
           flex: 5,
           child: Container(
-          key: key,
-          child: const DashboardScreen(),
+            key: key,
+            child: const DashboardScreen(),
           ),
         ),
       ],

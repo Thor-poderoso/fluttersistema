@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sistema/constants.dart';
 
+import 'components/header.dart';
 
 class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key});
+  const DashboardScreen({
+    super.key,
+  });
 
   static const dirIcon = "../../assets/icons";
+  static const dir = "../../assets/images";
 
   @override
   Widget build(BuildContext context) {
@@ -15,35 +18,45 @@ class DashboardScreen extends StatelessWidget {
         padding: const EdgeInsets.all(defaultPadding),
         child: Column(
           children: [
+            const Header(dirIcon: dirIcon, dir: dir),
+            const SizedBox(height: defaultPadding),
             Row(
               children: [
-                Text(
-                  "Dashboard",
-                  style: Theme.of(context).textTheme.headlineSmall,
+                Expanded(
+                  flex: 5,
+                  child: Container(
+                    height: 500,
+                    color: Colors.white,
+                  ),
                 ),
-                Spacer(),
-                const Expanded(
-                    child: TextField(
-                  decoration:
-                      InputDecoration(
-                        fillColor: secondaryColor, 
-                        filled: true,
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide.none, 
-                          borderRadius: BorderRadius.all(Radius.circular(10)), 
-                        ),
-                        suffixIcon: Container(
-                          padding: EdgeInsets.all(defaultPadding * 0.75),
-                          decoration: BoxDecoration(
-                            color: primaryColor,
+                const SizedBox(width: defaultPadding),
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    padding: const EdgeInsets.all(defaultPadding),
+                    height: 500,
+                    decoration: BoxDecoration(
+                        color: secondaryColor,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                      children: const [
+                        Text(
+                          "Storage Details",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
                           ),
-                          child: SvgPicture.asset("$dirIcon/Search.svg"),
                         ),
+                        SizedBox(
+                          height: 200,
+                          child: ,
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
