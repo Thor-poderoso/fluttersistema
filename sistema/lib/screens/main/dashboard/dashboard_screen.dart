@@ -12,38 +12,7 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<PieChartSectionData> paiChartSelectionData = [
-      PieChartSectionData(
-        color: primaryColor,
-        value: 25,
-        showTitle: false,
-        radius: 25,
-      ),
-      PieChartSectionData(
-        color: Color(0xFF26E5FF),
-        value: 20,
-        showTitle: false,
-        radius: 25,
-      ),
-      PieChartSectionData(
-        color: Color(0xFFFFCF26),
-        value: 10,
-        showTitle: false,
-        radius: 25,
-      ),
-      PieChartSectionData(
-        color: Color(0xFFEE2727),
-        value: 15,
-        showTitle: false,
-        radius: 25,
-      ),
-      PieChartSectionData(
-        color: primaryColor.withOpacity(0.1),
-        value: 25,
-        showTitle: false,
-        radius: 25,
-      ),
-    ];
+    
     return SafeArea(
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(defaultPadding),
@@ -80,10 +49,32 @@ class DashboardScreen extends StatelessWidget {
                         ),
                         SizedBox(
                           height: 200,
-                          child: PieChart(
-                            PieChartData(
-                              sections: paiChartSelectionData,
-                            ),
+                          child: Stack(
+                            children: [
+                              PieChart(
+                                PieChartData(
+                                  sectionsSpace: 0,
+                                  centerSpaceRadius: 70,
+                                  startDegreeOffset: -90,
+                                  sections: paiChartSelectionData,
+                                ),
+                              ),
+                              Positioned.fill(
+                                child: Column(
+                                  children: [
+                                    Text("29.1", style: Theme.of(context)
+                                    .textTheme
+                                    .headlineLarge
+                                    ?.copyWith(
+                                      color: Colors.white, 
+                                    fontWeight: FontWeight.w600
+                                     ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                            
                           ),
                         ),
                       ],
@@ -98,3 +89,36 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 }
+
+List<PieChartSectionData> paiChartSelectionData = [
+      PieChartSectionData(
+        color: primaryColor,
+        value: 25,
+        showTitle: false,
+        radius: 25,
+      ),
+      PieChartSectionData(
+        color: Color(0xFF26E5FF),
+        value: 20,
+        showTitle: false,
+        radius: 22,
+      ),
+      PieChartSectionData(
+        color: Color(0xFFFFCF26),
+        value: 10,
+        showTitle: false,
+        radius: 19,
+      ),
+      PieChartSectionData(
+        color: Color(0xFFEE2727),
+        value: 15,
+        showTitle: false,
+        radius: 16,
+      ),
+      PieChartSectionData(
+        color: primaryColor.withOpacity(0.1),
+        value: 25,
+        showTitle: false,
+        radius: 13,
+      ),
+    ];
