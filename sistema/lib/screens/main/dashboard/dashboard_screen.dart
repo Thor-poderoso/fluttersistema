@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sistema/constants.dart';
 import 'package:fl_chart/fl_chart.dart';
 
+import 'components/chart.dart';
 import 'components/header.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -47,35 +48,24 @@ class DashboardScreen extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        SizedBox(
-                          height: 200,
-                          child: Stack(
-                            children: [
-                              PieChart(
-                                PieChartData(
-                                  sectionsSpace: 0,
-                                  centerSpaceRadius: 70,
-                                  startDegreeOffset: -90,
-                                  sections: paiChartSelectionData,
-                                ),
-                              ),
-                              Positioned.fill(
-                                child: Column(
-                                  children: [
-                                    Text("29.1", style: Theme.of(context)
-                                    .textTheme
-                                    .headlineLarge
-                                    ?.copyWith(
-                                      color: Colors.white, 
-                                    fontWeight: FontWeight.w600
-                                     ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                            
+                        const SizedBox(height: defaultPadding),
+                        const Chart(),
+                        Container(
+                          padding: const EdgeInsets.all(defaultPadding),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 2, 
+                              color: primaryColor.withOpacity(0.15)),
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(defaultPadding)),
                           ),
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                
+                              )
+                            ],
+                          ) ,
                         ),
                       ],
                     ),
@@ -90,35 +80,3 @@ class DashboardScreen extends StatelessWidget {
   }
 }
 
-List<PieChartSectionData> paiChartSelectionData = [
-      PieChartSectionData(
-        color: primaryColor,
-        value: 25,
-        showTitle: false,
-        radius: 25,
-      ),
-      PieChartSectionData(
-        color: Color(0xFF26E5FF),
-        value: 20,
-        showTitle: false,
-        radius: 22,
-      ),
-      PieChartSectionData(
-        color: Color(0xFFFFCF26),
-        value: 10,
-        showTitle: false,
-        radius: 19,
-      ),
-      PieChartSectionData(
-        color: Color(0xFFEE2727),
-        value: 15,
-        showTitle: false,
-        radius: 16,
-      ),
-      PieChartSectionData(
-        color: primaryColor.withOpacity(0.1),
-        value: 25,
-        showTitle: false,
-        radius: 13,
-      ),
-    ];
