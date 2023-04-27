@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sistema/constants.dart';
 import 'package:fl_chart/fl_chart.dart';
 
@@ -13,7 +14,6 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return SafeArea(
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(defaultPadding),
@@ -40,32 +40,29 @@ class DashboardScreen extends StatelessWidget {
                         color: secondaryColor,
                         borderRadius: BorderRadius.circular(10)),
                     child: Column(
-                      children: [
-                        const Text(
+                      children: const [
+                        Text(
                           "Storage Details",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        const SizedBox(height: defaultPadding),
-                        const Chart(),
-                        Container(
-                          padding: const EdgeInsets.all(defaultPadding),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 2, 
-                              color: primaryColor.withOpacity(0.15)),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(defaultPadding)),
-                          ),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                
-                              )
-                            ],
-                          ) ,
+                        SizedBox(height: defaultPadding),
+                        Chart(),
+                        StorageInfoCard(
+                          dirIcon: dirIcon,
+                          svgSrc: "$dirIcon/Documents.svg",
+                          title: "Documents Files",
+                          amountOFiles: "1.3GB",
+                          numOfFiles: 1328,
+                        ),
+                         StorageInfoCard(
+                          dirIcon: dirIcon,
+                          svgSrc: "$dirIcon/Documents.svg",
+                          title: "Documents Files",
+                          amountOFiles: "1.3GB",
+                          numOfFiles: 1328,
                         ),
                       ],
                     ),
@@ -80,3 +77,60 @@ class DashboardScreen extends StatelessWidget {
   }
 }
 
+class StorageInfoCard extends StatelessWidget {
+  const StorageInfoCard({
+    super.key,
+    required this.dirIcon,
+    required this.title,
+    required this.svgSrc,
+    required this.amountOFiles,
+    required this.numOfFiles,
+  });
+
+  final String title, svgSrc, amountOFiles;
+  final int numOfFiles;
+  final String dirIcon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(defaultPadding),
+      decoration: BoxDecoration(
+        border: Border.all(width: 2, color: primaryColor.withOpacity(0.15)),
+        borderRadius: const BorderRadius.all(Radius.circular(defaultPadding)),
+      ),
+      child: Row(
+        children: [
+          SizedBox(
+            height: 20,
+            width: 20,
+            child: SvgPicture.asset("SvgSrc"),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    "$numOfFiles Files",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall
+                        ?.copyWith(color: Colors.white70),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Text(amountOFiles)
+        ],
+      ),
+    );
+  }
+}
