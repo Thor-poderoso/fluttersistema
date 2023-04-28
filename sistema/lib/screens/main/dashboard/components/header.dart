@@ -60,7 +60,7 @@ class ProfileCard extends StatelessWidget {
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-            child: Text("Angelina Joli"),
+            child: Text("Bruna Joli"),
           ),
           const Icon(Icons.keyboard_arrow_down),
         ],
@@ -81,7 +81,7 @@ class SearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-        hintText: "Search",
+        hintText: "Bruno Passou Aqui",
         fillColor: secondaryColor,
         filled: true,
         border: const OutlineInputBorder(
