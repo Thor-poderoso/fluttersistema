@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sistema/screens/main/dashboard/dashboard_screen.dart';
+import 'package:sistema/screens/dashboard/dashboard_screen.dart';
 
 import 'components/side_menu.dart';
 
