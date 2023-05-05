@@ -1,10 +1,15 @@
+<<<<<<< HEAD
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sistema/models/RecenFile.dart';
+=======
+import 'package:sistema/responsive.dart';
+>>>>>>> 45a4c1309048500f4b2412ad2d9773fad2d608da
 import 'package:flutter/material.dart';
 import 'package:sistema/constants.dart';
 import 'components/header.dart';
 import 'components/my_fiels.dart';
 import 'components/storage_details.dart';
+
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
