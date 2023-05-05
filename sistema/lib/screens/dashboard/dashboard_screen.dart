@@ -1,10 +1,10 @@
+import 'package:sistema/responsive.dart';
 import 'package:flutter/material.dart';
-
 import 'package:sistema/constants.dart';
-
 import 'components/header.dart';
 import 'components/my_fiels.dart';
 import 'components/storage_details.dart';
+
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
