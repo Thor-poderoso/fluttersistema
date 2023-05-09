@@ -1,7 +1,6 @@
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sistema/models/RecenFile.dart';
 import 'package:flutter/material.dart';
 import 'package:sistema/constants.dart';
+import 'package:sistema/responsive.dart';
 import 'components/header.dart';
 import 'components/my_fiels.dart';
 import 'components/recent_files.dart';
@@ -29,20 +28,26 @@ class DashboardScreen extends StatelessWidget {
                 Expanded(
                   flex: 5,
                   child: Column(
-                    children: const [
-                      MyFiels(),
-                      SizedBox(
+                    children: [
+                      const MyFiels(),
+                      const SizedBox(
                         height: defaultPadding,
                       ),
-                      RecentFiles(),
+                      const RecentFiles(),
+                      if (Responsive.isMobile(context))
+                        const SizedBox(height: defaultPadding),
+                      if (Responsive.isMobile(context))
+                        const StarageDetails(dirIcon: dirIcon),
                     ],
                   ),
                 ),
-                const SizedBox(width: defaultPadding),
-                const Expanded(
-                  flex: 2,
-                  child: StarageDetails(dirIcon: dirIcon),
-                ),
+                if (!Responsive.isMobile(context))
+                  const SizedBox(width: defaultPadding),
+                if (!Responsive.isMobile(context))
+                  const Expanded(
+                    flex: 2,
+                    child: StarageDetails(dirIcon: dirIcon),
+                  ),
               ],
             ),
           ],
@@ -50,30 +55,4 @@ class DashboardScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-
-
-DataRow recentFileDataRow(RecentFile fileInfo) {
-  return DataRow(
-    cells: [
-      DataCell(
-        Row(
-          children: [
-            SvgPicture.asset(
-              fileInfo.icon!,
-              height: 30,
-              width: 30,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-              child: Text(fileInfo.title!),
-            ),
-          ],
-        ),
-      ),
-      DataCell(Text(fileInfo.date!)),
-      DataCell(Text(fileInfo.size!)),
-    ],
-  );
 }

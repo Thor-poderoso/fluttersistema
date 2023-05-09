@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constants.dart';
 import '../../../models/RecenFile.dart';
-import '../dashboard_screen.dart';
 
 class RecentFiles extends StatelessWidget {
   const RecentFiles({
@@ -16,7 +15,9 @@ class RecentFiles extends StatelessWidget {
       decoration: const BoxDecoration(
           color: secondaryColor,
           borderRadius: BorderRadius.all(Radius.circular(10))),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start, 
+        children: [
         Text(
           "Recent Files",
           style: Theme.of(context).textTheme.titleLarge,
@@ -46,4 +47,28 @@ class RecentFiles extends StatelessWidget {
       ]),
     );
   }
+}
+
+DataRow recentFileDataRow(RecentFile fileInfo) {
+  return DataRow(
+    cells: [
+      DataCell(
+        Row(
+          children: [
+            SvgPicture.asset(
+              fileInfo.icon!,
+              height: 30,
+              width: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
+              child: Text(fileInfo.title!),
+            ),
+          ],
+        ),
+      ),
+      DataCell(Text(fileInfo.date!)),
+      DataCell(Text(fileInfo.size!)),
+    ],
+  );
 }
