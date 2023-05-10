@@ -1,9 +1,10 @@
 import 'package:provider/provider.dart';
 import 'package:sistema/constants.dart';
-import 'package:sistema/screens/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sistema/screens/main/main_screen.dart';
 
+import 'controllers/MenuAppController.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -11,6 +12,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,10 +27,10 @@ class MyApp extends StatelessWidget {
       home: MultiProvider(
         providers: [
           ChangeNotifierProvider(
-            create: (context) => MenuController()
-            ),
+            create: (context) => MenuAppController(),
+          ),
         ],
-        child: const MainSreen(),
+        child: const MainScreen(),
       ),
     );
   }

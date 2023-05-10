@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sistema/controllers/MenuAppController.dart';
 import 'package:sistema/responsive.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
 
@@ -20,7 +22,7 @@ class Header extends StatelessWidget {
       children: [
         if (!Responsive.isDesktop(context)) IconButton(
           icon: const Icon(Icons.menu),
-          onPressed: () {}, 
+          onPressed: context.read<MenuAppController>().controlMenu, 
           ),
           if (!Responsive.isMobile(context)) 
         Text(
@@ -65,7 +67,7 @@ class ProfileCard extends StatelessWidget {
             "$dir/profile_pic.png",
             height: 38,
           ),
-          const Padding(
+          if (!Responsive.isMobile(context)) const Padding(
             padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
             child: Text("Bruna Joli"),
           ),

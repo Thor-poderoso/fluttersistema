@@ -5,10 +5,10 @@ import 'package:sistema/responsive.dart';
 import '../../../constants.dart';
 import 'file_info_card.dart';
 
-class MyFiels extends StatelessWidget {
-  const MyFiels({
-    super.key,
-  });
+class MyFiles extends StatelessWidget {
+  const MyFiles({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +24,10 @@ class MyFiels extends StatelessWidget {
             ),
             ElevatedButton.icon(
               style: TextButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: defaultPadding * 1.5, vertical: defaultPadding),
+                padding: EdgeInsets.symmetric(
+                    horizontal: defaultPadding * 1.5, 
+                    vertical: defaultPadding / (Responsive.isMobile(context) ? 2 : 1),
+                ),
               ),
               onPressed: () {},
               icon: const Icon(Icons.add),
@@ -36,15 +38,16 @@ class MyFiels extends StatelessWidget {
         const SizedBox(
           height: defaultPadding,
         ),
-        Responsive(
-          Key: key(),
-          mobile: FileInfoCardGridView(crossAxisCount: _size.width < 650 ? 2 : 4,
-          childAspectRatio: _size.width < 650 ? 1.3 : 1,
+         Responsive(
+          mobile: FileInfoCardGridView(
+            crossAxisCount: _size.width < 650 ? 2 : 4,
+            childAspectRatio: _size.width < 650 && _size.width > 350 ? 1.3 : 1,
           ),
           tablet: const FileInfoCardGridView(),
-          desktop: FileInfoCardGridView(childAspectRatio: _size.width < 1400 ? 1.1 : 1.4,
+          desktop: FileInfoCardGridView(
+            childAspectRatio: _size.width < 1400 ? 1.1 : 1.4,
           ),
-        )
+        ),
       ],
     );
   }
@@ -52,10 +55,10 @@ class MyFiels extends StatelessWidget {
 
 class FileInfoCardGridView extends StatelessWidget {
   const FileInfoCardGridView({
-    super.key,
+    Key? key,
     this.crossAxisCount = 4,
     this.childAspectRatio = 1,
-  });
+  }) : super(key: key);
 
   final int crossAxisCount;
   final double childAspectRatio;
