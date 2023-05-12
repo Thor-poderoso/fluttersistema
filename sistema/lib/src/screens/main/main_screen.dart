@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sistema/responsive.dart';
-import 'package:sistema/screens/dashboard/dashboard_screen.dart';
 
 import '../../controllers/MenuAppController.dart';
+import '../dashboard/dashboard_screen.dart';
 import 'components/side_menu.dart';
 
 class MainScreen extends StatelessWidget {

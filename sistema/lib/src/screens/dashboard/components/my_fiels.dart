@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sistema/models/MyFiles.dart';
 import 'package:sistema/responsive.dart';
 
-import '../../../constants.dart';
+import '../../../../constants.dart';
+import '../../../models/MyFiles.dart';
 import 'file_info_card.dart';
 
 class MyFiles extends StatelessWidget {
